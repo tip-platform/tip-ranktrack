@@ -1,8 +1,9 @@
 syntax = "proto3";
 package ranktrack.v1;
+option go_package = "github.com/tip-platform/tip-ranktrack/proto;ranktrackv1";
 
 // Request Get Ranking
-message ListRankingRequest {
+message GetRankingRequest {
   string organization = 1;
   int32 limit = 2;
   optional string country = 3;
@@ -63,13 +64,13 @@ message TrajectoryPoint {
   int32 points = 3;
 }
 
-message GetTrajectoryResponse {
+message ListTrajectoryResponse {
   repeated TrajectoryPoint player1 = 1;
   repeated TrajectoryPoint player2 = 2;
 }
 
 service RankTrackService {
-  rpc ListRankings(ListRankingsRequest) returns (ListRankingsResponse);
+  rpc ListRankings(GetRankingRequest) returns (ListRankingsResponse);
   rpc GetPlayer(GetPlayerRequest) returns (GetPlayerResponse);
-  rpc GetTrajectory(GetTrajectoryRequest) returns (GetTrajectoryResponse);
+  rpc ListTrajectory(GetTrajectoryRequest) returns (ListTrajectoryResponse);
 }

@@ -22,7 +22,7 @@ const (
 )
 
 // Request Get Ranking
-type GetRankingRequest struct {
+type ListRankingsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Organization  string                 `protobuf:"bytes,1,opt,name=organization,proto3" json:"organization,omitempty"`
 	Limit         int32                  `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
@@ -32,20 +32,20 @@ type GetRankingRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetRankingRequest) Reset() {
-	*x = GetRankingRequest{}
+func (x *ListRankingsRequest) Reset() {
+	*x = ListRankingsRequest{}
 	mi := &file_proto_ranktrack_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetRankingRequest) String() string {
+func (x *ListRankingsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetRankingRequest) ProtoMessage() {}
+func (*ListRankingsRequest) ProtoMessage() {}
 
-func (x *GetRankingRequest) ProtoReflect() protoreflect.Message {
+func (x *ListRankingsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_ranktrack_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -57,33 +57,33 @@ func (x *GetRankingRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetRankingRequest.ProtoReflect.Descriptor instead.
-func (*GetRankingRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListRankingsRequest.ProtoReflect.Descriptor instead.
+func (*ListRankingsRequest) Descriptor() ([]byte, []int) {
 	return file_proto_ranktrack_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *GetRankingRequest) GetOrganization() string {
+func (x *ListRankingsRequest) GetOrganization() string {
 	if x != nil {
 		return x.Organization
 	}
 	return ""
 }
 
-func (x *GetRankingRequest) GetLimit() int32 {
+func (x *ListRankingsRequest) GetLimit() int32 {
 	if x != nil {
 		return x.Limit
 	}
 	return 0
 }
 
-func (x *GetRankingRequest) GetCountry() string {
+func (x *ListRankingsRequest) GetCountry() string {
 	if x != nil && x.Country != nil {
 		return *x.Country
 	}
 	return ""
 }
 
-func (x *GetRankingRequest) GetDate() string {
+func (x *ListRankingsRequest) GetDate() string {
 	if x != nil && x.Date != nil {
 		return *x.Date
 	}
@@ -451,7 +451,7 @@ func (x *GetPlayerResponse) GetOrganization() string {
 }
 
 // Reqpuest Trajectory
-type GetTrajectoryRequest struct {
+type ListTrajectoryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PlayerId      int32                  `protobuf:"varint,1,opt,name=player_id,json=playerId,proto3" json:"player_id,omitempty"`
 	Period        string                 `protobuf:"bytes,2,opt,name=period,proto3" json:"period,omitempty"`
@@ -460,20 +460,20 @@ type GetTrajectoryRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetTrajectoryRequest) Reset() {
-	*x = GetTrajectoryRequest{}
+func (x *ListTrajectoryRequest) Reset() {
+	*x = ListTrajectoryRequest{}
 	mi := &file_proto_ranktrack_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetTrajectoryRequest) String() string {
+func (x *ListTrajectoryRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetTrajectoryRequest) ProtoMessage() {}
+func (*ListTrajectoryRequest) ProtoMessage() {}
 
-func (x *GetTrajectoryRequest) ProtoReflect() protoreflect.Message {
+func (x *ListTrajectoryRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_ranktrack_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -485,26 +485,26 @@ func (x *GetTrajectoryRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetTrajectoryRequest.ProtoReflect.Descriptor instead.
-func (*GetTrajectoryRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use ListTrajectoryRequest.ProtoReflect.Descriptor instead.
+func (*ListTrajectoryRequest) Descriptor() ([]byte, []int) {
 	return file_proto_ranktrack_proto_rawDescGZIP(), []int{6}
 }
 
-func (x *GetTrajectoryRequest) GetPlayerId() int32 {
+func (x *ListTrajectoryRequest) GetPlayerId() int32 {
 	if x != nil {
 		return x.PlayerId
 	}
 	return 0
 }
 
-func (x *GetTrajectoryRequest) GetPeriod() string {
+func (x *ListTrajectoryRequest) GetPeriod() string {
 	if x != nil {
 		return x.Period
 	}
 	return ""
 }
 
-func (x *GetTrajectoryRequest) GetPlayerRivalId() int32 {
+func (x *ListTrajectoryRequest) GetPlayerRivalId() int32 {
 	if x != nil && x.PlayerRivalId != nil {
 		return *x.PlayerRivalId
 	}
@@ -627,8 +627,8 @@ var File_proto_ranktrack_proto protoreflect.FileDescriptor
 
 const file_proto_ranktrack_proto_rawDesc = "" +
 	"\n" +
-	"\x15proto/ranktrack.proto\x12\franktrack.v1\"\x9a\x01\n" +
-	"\x11GetRankingRequest\x12\"\n" +
+	"\x15proto/ranktrack.proto\x12\franktrack.v1\"\x9c\x01\n" +
+	"\x13ListRankingsRequest\x12\"\n" +
 	"\forganization\x18\x01 \x01(\tR\forganization\x12\x14\n" +
 	"\x05limit\x18\x02 \x01(\x05R\x05limit\x12\x1d\n" +
 	"\acountry\x18\x03 \x01(\tH\x00R\acountry\x88\x01\x01\x12\x17\n" +
@@ -667,8 +667,8 @@ const file_proto_ranktrack_proto_rawDesc = "" +
 	"\n" +
 	"volatility\x18\x06 \x01(\x02R\n" +
 	"volatility\x12\"\n" +
-	"\forganization\x18\a \x01(\tR\forganization\"\x8c\x01\n" +
-	"\x14GetTrajectoryRequest\x12\x1b\n" +
+	"\forganization\x18\a \x01(\tR\forganization\"\x8d\x01\n" +
+	"\x15ListTrajectoryRequest\x12\x1b\n" +
 	"\tplayer_id\x18\x01 \x01(\x05R\bplayerId\x12\x16\n" +
 	"\x06period\x18\x02 \x01(\tR\x06period\x12+\n" +
 	"\x0fplayer_rival_id\x18\x03 \x01(\x05H\x00R\rplayerRivalId\x88\x01\x01B\x12\n" +
@@ -679,11 +679,11 @@ const file_proto_ranktrack_proto_rawDesc = "" +
 	"\x06points\x18\x03 \x01(\x05R\x06points\"\x8a\x01\n" +
 	"\x16ListTrajectoryResponse\x127\n" +
 	"\aplayer1\x18\x01 \x03(\v2\x1d.ranktrack.v1.TrajectoryPointR\aplayer1\x127\n" +
-	"\aplayer2\x18\x02 \x03(\v2\x1d.ranktrack.v1.TrajectoryPointR\aplayer22\x91\x02\n" +
-	"\x10RankTrackService\x12S\n" +
-	"\fListRankings\x12\x1f.ranktrack.v1.GetRankingRequest\x1a\".ranktrack.v1.ListRankingsResponse\x12L\n" +
-	"\tGetPlayer\x12\x1e.ranktrack.v1.GetPlayerRequest\x1a\x1f.ranktrack.v1.GetPlayerResponse\x12Z\n" +
-	"\x0eListTrajectory\x12\".ranktrack.v1.GetTrajectoryRequest\x1a$.ranktrack.v1.ListTrajectoryResponseB9Z7github.com/tip-platform/tip-ranktrack/proto;ranktrackv1b\x06proto3"
+	"\aplayer2\x18\x02 \x03(\v2\x1d.ranktrack.v1.TrajectoryPointR\aplayer22\x94\x02\n" +
+	"\x10RankTrackService\x12U\n" +
+	"\fListRankings\x12!.ranktrack.v1.ListRankingsRequest\x1a\".ranktrack.v1.ListRankingsResponse\x12L\n" +
+	"\tGetPlayer\x12\x1e.ranktrack.v1.GetPlayerRequest\x1a\x1f.ranktrack.v1.GetPlayerResponse\x12[\n" +
+	"\x0eListTrajectory\x12#.ranktrack.v1.ListTrajectoryRequest\x1a$.ranktrack.v1.ListTrajectoryResponseB9Z7github.com/tip-platform/tip-ranktrack/proto;ranktrackv1b\x06proto3"
 
 var (
 	file_proto_ranktrack_proto_rawDescOnce sync.Once
@@ -699,13 +699,13 @@ func file_proto_ranktrack_proto_rawDescGZIP() []byte {
 
 var file_proto_ranktrack_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
 var file_proto_ranktrack_proto_goTypes = []any{
-	(*GetRankingRequest)(nil),      // 0: ranktrack.v1.GetRankingRequest
+	(*ListRankingsRequest)(nil),    // 0: ranktrack.v1.ListRankingsRequest
 	(*RankingEntry)(nil),           // 1: ranktrack.v1.RankingEntry
 	(*PlayerInfo)(nil),             // 2: ranktrack.v1.PlayerInfo
 	(*ListRankingsResponse)(nil),   // 3: ranktrack.v1.ListRankingsResponse
 	(*GetPlayerRequest)(nil),       // 4: ranktrack.v1.GetPlayerRequest
 	(*GetPlayerResponse)(nil),      // 5: ranktrack.v1.GetPlayerResponse
-	(*GetTrajectoryRequest)(nil),   // 6: ranktrack.v1.GetTrajectoryRequest
+	(*ListTrajectoryRequest)(nil),  // 6: ranktrack.v1.ListTrajectoryRequest
 	(*TrajectoryPoint)(nil),        // 7: ranktrack.v1.TrajectoryPoint
 	(*ListTrajectoryResponse)(nil), // 8: ranktrack.v1.ListTrajectoryResponse
 }
@@ -715,9 +715,9 @@ var file_proto_ranktrack_proto_depIdxs = []int32{
 	2, // 2: ranktrack.v1.GetPlayerResponse.player:type_name -> ranktrack.v1.PlayerInfo
 	7, // 3: ranktrack.v1.ListTrajectoryResponse.player1:type_name -> ranktrack.v1.TrajectoryPoint
 	7, // 4: ranktrack.v1.ListTrajectoryResponse.player2:type_name -> ranktrack.v1.TrajectoryPoint
-	0, // 5: ranktrack.v1.RankTrackService.ListRankings:input_type -> ranktrack.v1.GetRankingRequest
+	0, // 5: ranktrack.v1.RankTrackService.ListRankings:input_type -> ranktrack.v1.ListRankingsRequest
 	4, // 6: ranktrack.v1.RankTrackService.GetPlayer:input_type -> ranktrack.v1.GetPlayerRequest
-	6, // 7: ranktrack.v1.RankTrackService.ListTrajectory:input_type -> ranktrack.v1.GetTrajectoryRequest
+	6, // 7: ranktrack.v1.RankTrackService.ListTrajectory:input_type -> ranktrack.v1.ListTrajectoryRequest
 	3, // 8: ranktrack.v1.RankTrackService.ListRankings:output_type -> ranktrack.v1.ListRankingsResponse
 	5, // 9: ranktrack.v1.RankTrackService.GetPlayer:output_type -> ranktrack.v1.GetPlayerResponse
 	8, // 10: ranktrack.v1.RankTrackService.ListTrajectory:output_type -> ranktrack.v1.ListTrajectoryResponse

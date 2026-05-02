@@ -28,9 +28,9 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RankTrackServiceClient interface {
-	ListRankings(ctx context.Context, in *GetRankingRequest, opts ...grpc.CallOption) (*ListRankingsResponse, error)
+	ListRankings(ctx context.Context, in *ListRankingsRequest, opts ...grpc.CallOption) (*ListRankingsResponse, error)
 	GetPlayer(ctx context.Context, in *GetPlayerRequest, opts ...grpc.CallOption) (*GetPlayerResponse, error)
-	ListTrajectory(ctx context.Context, in *GetTrajectoryRequest, opts ...grpc.CallOption) (*ListTrajectoryResponse, error)
+	ListTrajectory(ctx context.Context, in *ListTrajectoryRequest, opts ...grpc.CallOption) (*ListTrajectoryResponse, error)
 }
 
 type rankTrackServiceClient struct {
@@ -41,7 +41,7 @@ func NewRankTrackServiceClient(cc grpc.ClientConnInterface) RankTrackServiceClie
 	return &rankTrackServiceClient{cc}
 }
 
-func (c *rankTrackServiceClient) ListRankings(ctx context.Context, in *GetRankingRequest, opts ...grpc.CallOption) (*ListRankingsResponse, error) {
+func (c *rankTrackServiceClient) ListRankings(ctx context.Context, in *ListRankingsRequest, opts ...grpc.CallOption) (*ListRankingsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListRankingsResponse)
 	err := c.cc.Invoke(ctx, RankTrackService_ListRankings_FullMethodName, in, out, cOpts...)
@@ -61,7 +61,7 @@ func (c *rankTrackServiceClient) GetPlayer(ctx context.Context, in *GetPlayerReq
 	return out, nil
 }
 
-func (c *rankTrackServiceClient) ListTrajectory(ctx context.Context, in *GetTrajectoryRequest, opts ...grpc.CallOption) (*ListTrajectoryResponse, error) {
+func (c *rankTrackServiceClient) ListTrajectory(ctx context.Context, in *ListTrajectoryRequest, opts ...grpc.CallOption) (*ListTrajectoryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListTrajectoryResponse)
 	err := c.cc.Invoke(ctx, RankTrackService_ListTrajectory_FullMethodName, in, out, cOpts...)
@@ -75,9 +75,9 @@ func (c *rankTrackServiceClient) ListTrajectory(ctx context.Context, in *GetTraj
 // All implementations must embed UnimplementedRankTrackServiceServer
 // for forward compatibility.
 type RankTrackServiceServer interface {
-	ListRankings(context.Context, *GetRankingRequest) (*ListRankingsResponse, error)
+	ListRankings(context.Context, *ListRankingsRequest) (*ListRankingsResponse, error)
 	GetPlayer(context.Context, *GetPlayerRequest) (*GetPlayerResponse, error)
-	ListTrajectory(context.Context, *GetTrajectoryRequest) (*ListTrajectoryResponse, error)
+	ListTrajectory(context.Context, *ListTrajectoryRequest) (*ListTrajectoryResponse, error)
 	mustEmbedUnimplementedRankTrackServiceServer()
 }
 
@@ -88,13 +88,13 @@ type RankTrackServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRankTrackServiceServer struct{}
 
-func (UnimplementedRankTrackServiceServer) ListRankings(context.Context, *GetRankingRequest) (*ListRankingsResponse, error) {
+func (UnimplementedRankTrackServiceServer) ListRankings(context.Context, *ListRankingsRequest) (*ListRankingsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListRankings not implemented")
 }
 func (UnimplementedRankTrackServiceServer) GetPlayer(context.Context, *GetPlayerRequest) (*GetPlayerResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetPlayer not implemented")
 }
-func (UnimplementedRankTrackServiceServer) ListTrajectory(context.Context, *GetTrajectoryRequest) (*ListTrajectoryResponse, error) {
+func (UnimplementedRankTrackServiceServer) ListTrajectory(context.Context, *ListTrajectoryRequest) (*ListTrajectoryResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method ListTrajectory not implemented")
 }
 func (UnimplementedRankTrackServiceServer) mustEmbedUnimplementedRankTrackServiceServer() {}
@@ -119,7 +119,7 @@ func RegisterRankTrackServiceServer(s grpc.ServiceRegistrar, srv RankTrackServic
 }
 
 func _RankTrackService_ListRankings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetRankingRequest)
+	in := new(ListRankingsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -131,7 +131,7 @@ func _RankTrackService_ListRankings_Handler(srv interface{}, ctx context.Context
 		FullMethod: RankTrackService_ListRankings_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RankTrackServiceServer).ListRankings(ctx, req.(*GetRankingRequest))
+		return srv.(RankTrackServiceServer).ListRankings(ctx, req.(*ListRankingsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -155,7 +155,7 @@ func _RankTrackService_GetPlayer_Handler(srv interface{}, ctx context.Context, d
 }
 
 func _RankTrackService_ListTrajectory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTrajectoryRequest)
+	in := new(ListTrajectoryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -167,7 +167,7 @@ func _RankTrackService_ListTrajectory_Handler(srv interface{}, ctx context.Conte
 		FullMethod: RankTrackService_ListTrajectory_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RankTrackServiceServer).ListTrajectory(ctx, req.(*GetTrajectoryRequest))
+		return srv.(RankTrackServiceServer).ListTrajectory(ctx, req.(*ListTrajectoryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

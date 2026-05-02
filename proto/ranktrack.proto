@@ -3,7 +3,7 @@ package ranktrack.v1;
 option go_package = "github.com/tip-platform/tip-ranktrack/proto;ranktrackv1";
 
 // Request Get Ranking
-message GetRankingRequest {
+message ListRankingsRequest {
   string organization = 1;
   int32 limit = 2;
   optional string country = 3;
@@ -51,8 +51,8 @@ message GetPlayerResponse {
   string organization = 7;
 }
 
-// Request Trajectory
-message GetTrajectoryRequest {
+/ Reqpuest Trajectory
+message ListTrajectoryRequest {
   int32 player_id = 1;
   string period = 2;
   optional int32 player_rival_id = 3;
@@ -70,7 +70,7 @@ message ListTrajectoryResponse {
 }
 
 service RankTrackService {
-  rpc ListRankings(GetRankingRequest) returns (ListRankingsResponse);
+  rpc ListRankings(ListRankingsRequest) returns (ListRankingsResponse);
   rpc GetPlayer(GetPlayerRequest) returns (GetPlayerResponse);
-  rpc ListTrajectory(GetTrajectoryRequest) returns (ListTrajectoryResponse);
+  rpc ListTrajectory(ListTrajectoryRequest) returns (ListTrajectoryResponse);
 }

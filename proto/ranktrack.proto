@@ -35,7 +35,7 @@ message ListRankingsResponse {
   int32 total = 2;
 }
 
-// Request datails player
+// Request player details
 message GetPlayerRequest {
   int32 player_id = 1;
 }

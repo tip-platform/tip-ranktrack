@@ -51,7 +51,7 @@ message GetPlayerResponse {
   string organization = 7;
 }
 
-// Reqpuest Trajectory
+// Request Trajectory
 message GetTrajectoryRequest {
   int32 player_id = 1;
   string period = 2;

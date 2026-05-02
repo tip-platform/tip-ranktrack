@@ -1,0 +1,76 @@
+syntax = "proto3";
+package ranktrack.v1;
+option go_package = "github.com/tip-platform/tip-ranktrack/proto;ranktrackv1";
+
+// Request Get Ranking
+message ListRankingsRequest {
+  string organization = 1;
+  int32 limit = 2;
+  optional string country = 3;
+  optional string date = 4;
+}
+
+// Response the ranking
+message RankingEntry {
+  int32 position = 1;
+  int32 previous_position = 2;
+  float momentum = 3;
+  float volatility = 4;
+  int32 points = 5;
+  int32 previous_points = 6;
+  int32 best_position = 7;
+  PlayerInfo player = 8;
+}
+
+// Response Ranking Info
+message PlayerInfo {
+  int32 id = 1;
+  string name = 2;
+  string country_code = 3;
+  int32 age = 4;
+}
+
+message ListRankingsResponse {
+  repeated RankingEntry rankings = 1;
+  int32 total = 2;
+}
+
+// Request player details
+message GetPlayerRequest {
+  int32 player_id = 1;
+}
+
+// Response Player details
+message GetPlayerResponse {
+  PlayerInfo player = 1;
+  int32 current_position = 2;
+  int32 current_points = 3;
+  int32 best_position = 4;
+  float momentum = 5;
+  float volatility = 6;
+  string organization = 7;
+}
+
+/ Reqpuest Trajectory
+message ListTrajectoryRequest {
+  int32 player_id = 1;
+  string period = 2;
+  optional int32 player_rival_id = 3;
+}
+
+message TrajectoryPoint {
+  string date = 1;
+  int32 position = 2;
+  int32 points = 3;
+}
+
+message ListTrajectoryResponse {
+  repeated TrajectoryPoint player1 = 1;
+  repeated TrajectoryPoint player2 = 2;
+}
+
+service RankTrackService {
+  rpc ListRankings(ListRankingsRequest) returns (ListRankingsResponse);
+  rpc GetPlayer(GetPlayerRequest) returns (GetPlayerResponse);
+  rpc ListTrajectory(ListTrajectoryRequest) returns (ListTrajectoryResponse);
+}

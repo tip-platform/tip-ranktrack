@@ -36,9 +36,3 @@ func (s RankingSnapshot) Validate() error {
 	}
 	return nil
 }
-
-type RankingRepository interface {
-	ListRankings(filter RankingFilter) ([]RankingSnapshot, error)
-	GetPlayer(playerID int, rankingType RankingType) (RankingSnapshot, error)
-	GetTrajectory(filter TrajectoryFilter) ([]PlayerTrajectory, error)
-}

@@ -5,7 +5,6 @@ package model
 import (
 	"time"
 
-	playerdomain "github.com/tip-platform/tip-ranktrack/internal/player/domain"
 	modelerr "github.com/tip-platform/tip-ranktrack/internal/ranking/domain/error"
 )
 
@@ -18,7 +17,7 @@ const (
 
 type RankingSnapshot struct {
 	ID                                        uint32
-	Player                                    playerdomain.Player
+	Player                                    Player
 	RankingType                               RankingType
 	SnapshotDate                              time.Time
 	Momentum, Volatility                      float64

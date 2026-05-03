@@ -3,7 +3,7 @@ package model
 import (
 	"time"
 
-	dominerr "github.com/tip-platform/tip-ranktrack/internal/ranking/domain/error"
+	domainerr "github.com/tip-platform/tip-ranktrack/internal/ranking/domain/error"
 )
 
 type RankingFilter struct {
@@ -22,16 +22,16 @@ var ValidPeriod = map[string]bool{
 
 func (m RankingFilter) Validate() error {
 	if m.Type != ATP && m.Type != WTA {
-		return dominerr.InvalidRankingTypeError{Value: string(m.Type)}
+		return domainerr.InvalidRankingTypeError{Value: string(m.Type)}
 	}
 	if m.Type == ATP && m.Limit > 2000 {
-		return dominerr.InvalidRankingLimitError{Limit: m.Limit, Max: 2000, Type: string(m.Type)}
+		return domainerr.InvalidRankingLimitError{Limit: m.Limit, Max: 2000, Type: string(m.Type)}
 	}
 	if !ValidPeriod[m.Period] {
-		return dominerr.InvalidPeriodError{Value: m.Period}
+		return domainerr.InvalidPeriodError{Value: m.Period}
 	}
 	if m.Date.After(time.Now()) {
-		return dominerr.InvalidFutureDateError{Value: m.Date}
+		return domainerr.InvalidFutureDateError{Value: m.Date}
 	}
 	return nil
 }

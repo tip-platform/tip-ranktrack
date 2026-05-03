@@ -7,8 +7,11 @@
 // the concrete type.
 package schema
 
-import "github.com/tip-platform/tip-ranktrack/internal/ranking/domain/model"
+// Validatable is implemented by any domain type that can be validated.
+type Validatable interface {
+	Validate() error
+}
 
-func Validate(v model.Validator) error {
+func Validate(v Validatable) error {
 	return v.Validate()
 }

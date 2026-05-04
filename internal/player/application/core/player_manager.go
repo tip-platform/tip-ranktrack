@@ -11,6 +11,14 @@ type playerManager struct {
 	repo port.PlayerRepository
 }
 
+func NewPlayerManager(repo port.PlayerRepository) port.PlayerService {
+	if repo == nil {
+		panic("core: nil PlayerRepository")
+	}
+
+	return &playerManager{repo: repo}
+}
+
 func (m *playerManager) CreatePlayer(ctx context.Context, player domain.Player) error {
 	if err := player.Validate(); err != nil {
 		return err

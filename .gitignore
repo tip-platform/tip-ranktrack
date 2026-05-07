@@ -1,0 +1,5 @@
+.env
+.atl/
+ranktrack.pb.go
+ranktrack_grpc.pb.go
+main
